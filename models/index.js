@@ -1,5 +1,5 @@
 const Traveller = require("./Traveller");
 const Location = require("./Location");
-const Trips = require("./Trips");
+const Trip = require("./Trip");
 
-module.exports = { Traveller, Location, Trips };
+module.exports = { Traveller, Location, Trip };
