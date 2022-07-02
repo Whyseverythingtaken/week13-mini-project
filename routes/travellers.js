@@ -17,10 +17,29 @@ travellersRouter.get("/", async (request, response) => {
 travellersRouter.post("/", async (request, response) => {
   const { name, email } = request.body;
 
-  const traveller = await Traveller.create({
-    name,
-    email,
-  });
+  try {
+    const traveller = await Traveller.create({
+      name,
+      email,
+    });
+
+    response.status(200).json(traveller);
+  } catch (error) {
+    response.status(500).json(error);
+  }
+});
+
+travellersRouter.get("/:id", async (request, response) => {
+  const { id } = request.params;
+  const traveller = await Traveller.findByPk(id);
+
+  if (!traveller) {
+    response
+      .status(400)
+      .send(`Please provide a valid traveller id, ID: ${id} does not exist.`);
+
+    return;
+  }
 
   response.status(200).json(traveller);
 });
