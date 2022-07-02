@@ -4,6 +4,7 @@ const Trip = require("./Trip");
 
 Trip.hasMany(Traveller, {
   foreignKey: "traveller_id",
+  onDelete: "CASCADE",
 });
 
 Traveller.belongsTo(Trip, {
@@ -12,6 +13,7 @@ Traveller.belongsTo(Trip, {
 
 Trip.hasMany(Location, {
   foreignKey: "location_id",
+  onDelete: "CASCADE",
 });
 
 Location.belongsTo(Trip, {
